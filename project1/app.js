@@ -13,7 +13,7 @@ const server = http.createServer(function (req, res) {
 
   try {
 
-    // Home / Books page
+    // Home / Books page if name = /home or / 
     if (pathname === '/' || pathname === '/home') {
 
       const data = fs.readFileSync(
@@ -32,7 +32,7 @@ const server = http.createServer(function (req, res) {
       res.end(personalizedContent);
     }
 
-    // About page
+    // About page if the pathname /about
     else if (pathname === '/about') {
 
       const data = fs.readFileSync(
@@ -47,7 +47,7 @@ const server = http.createServer(function (req, res) {
       res.end(data);
     }
 
-    // Contact page
+    // Contact page if the path name /contact
     else if (pathname === '/contact') {
 
       const data = fs.readFileSync(
@@ -62,7 +62,7 @@ const server = http.createServer(function (req, res) {
       res.end(data);
     }
 
-    // CSS
+    // CSS linker
     else if (req.url.match(/[.]css$/)) {
 
       const cssPath = path.join(
@@ -99,7 +99,7 @@ const server = http.createServer(function (req, res) {
 
       fileStream.pipe(res);
     }
-    // 404
+    // 404 error code
     else {
 
       res.writeHead(404, {
